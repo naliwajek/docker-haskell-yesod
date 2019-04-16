@@ -1,0 +1,8 @@
+web:
+  build: .
+  command: stack exec -- yesod devel
+  stdin_open: true
+  volumes:
+   - .:/app
+  ports:
+   - "3000:3000"

@@ -1,0 +1,180 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: d71674e914ef701a9ea93b58a436b327ee1678f8689566a67f251da69a571eb5
+
+name:           lleksah
+version:        0.0.0
+build-type:     Simple
+
+flag dev
+  description: Turn on development settings, like auto-reload templates.
+  manual: False
+  default: False
+
+flag library-only
+  description: Build for use with "yesod devel"
+  manual: False
+  default: False
+
+library
+  exposed-modules:
+      Application
+      Foundation
+      Handler.Comment
+      Handler.Common
+      Handler.Home
+      Import
+      Import.NoFoundation
+      Settings
+      Settings.StaticFiles
+  other-modules:
+      Paths_lleksah
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson >=0.6 && <1.4
+    , base >=4.8.2.0 && <4.9 || >=4.9.1.0 && <5
+    , bytestring >=0.9 && <0.11
+    , case-insensitive
+    , classy-prelude >=1.4 && <1.5
+    , classy-prelude-conduit >=1.4 && <1.5
+    , classy-prelude-yesod >=1.4 && <1.5
+    , conduit >=1.0 && <2.0
+    , containers
+    , data-default
+    , directory >=1.1 && <1.4
+    , fast-logger >=2.2 && <2.5
+    , file-embed
+    , foreign-store
+    , hjsmin >=0.1 && <0.3
+    , http-client-tls >=0.3 && <0.4
+    , http-conduit >=2.3 && <2.4
+    , monad-control >=0.3 && <1.1
+    , monad-logger >=0.3 && <0.4
+    , safe
+    , shakespeare >=2.0 && <2.1
+    , template-haskell
+    , text >=0.11 && <2.0
+    , time
+    , unordered-containers
+    , vector
+    , wai
+    , wai-extra >=3.0 && <3.1
+    , wai-logger >=2.2 && <2.4
+    , warp >=3.0 && <3.3
+    , yaml >=0.8 && <0.9
+    , yesod >=1.6 && <1.7
+    , yesod-core >=1.6 && <1.7
+    , yesod-form >=1.6 && <1.7
+    , yesod-static >=1.6 && <1.7
+  if (flag(dev)) || (flag(library-only))
+    ghc-options: -Wall -fwarn-tabs -O0
+    cpp-options: -DDEVELOPMENT
+  else
+    ghc-options: -Wall -fwarn-tabs -O2
+  default-language: Haskell2010
+
+executable lleksah
+  main-is: main.hs
+  other-modules:
+      DevelMain
+      Paths_lleksah
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson >=0.6 && <1.4
+    , base >=4.8.2.0 && <4.9 || >=4.9.1.0 && <5
+    , bytestring >=0.9 && <0.11
+    , case-insensitive
+    , classy-prelude >=1.4 && <1.5
+    , classy-prelude-conduit >=1.4 && <1.5
+    , classy-prelude-yesod >=1.4 && <1.5
+    , conduit >=1.0 && <2.0
+    , containers
+    , data-default
+    , directory >=1.1 && <1.4
+    , fast-logger >=2.2 && <2.5
+    , file-embed
+    , foreign-store
+    , hjsmin >=0.1 && <0.3
+    , http-client-tls >=0.3 && <0.4
+    , http-conduit >=2.3 && <2.4
+    , lleksah
+    , monad-control >=0.3 && <1.1
+    , monad-logger >=0.3 && <0.4
+    , safe
+    , shakespeare >=2.0 && <2.1
+    , template-haskell
+    , text >=0.11 && <2.0
+    , time
+    , unordered-containers
+    , vector
+    , wai
+    , wai-extra >=3.0 && <3.1
+    , wai-logger >=2.2 && <2.4
+    , warp >=3.0 && <3.3
+    , yaml >=0.8 && <0.9
+    , yesod >=1.6 && <1.7
+    , yesod-core >=1.6 && <1.7
+    , yesod-form >=1.6 && <1.7
+    , yesod-static >=1.6 && <1.7
+  if flag(library-only)
+    buildable: False
+  default-language: Haskell2010
+
+test-suite lleksah-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Handler.CommonSpec
+      Handler.HomeSpec
+      TestImport
+      Paths_lleksah
+  hs-source-dirs:
+      test
+  ghc-options: -Wall
+  build-depends:
+      aeson >=0.6 && <1.4
+    , base >=4.8.2.0 && <4.9 || >=4.9.1.0 && <5
+    , bytestring >=0.9 && <0.11
+    , case-insensitive
+    , classy-prelude >=1.4 && <1.5
+    , classy-prelude-conduit >=1.4 && <1.5
+    , classy-prelude-yesod >=1.4 && <1.5
+    , conduit >=1.0 && <2.0
+    , containers
+    , data-default
+    , directory >=1.1 && <1.4
+    , fast-logger >=2.2 && <2.5
+    , file-embed
+    , foreign-store
+    , hjsmin >=0.1 && <0.3
+    , hspec >=2.0.0
+    , http-client-tls >=0.3 && <0.4
+    , http-conduit >=2.3 && <2.4
+    , lleksah
+    , monad-control >=0.3 && <1.1
+    , monad-logger >=0.3 && <0.4
+    , safe
+    , shakespeare >=2.0 && <2.1
+    , template-haskell
+    , text >=0.11 && <2.0
+    , time
+    , unordered-containers
+    , vector
+    , wai
+    , wai-extra >=3.0 && <3.1
+    , wai-logger >=2.2 && <2.4
+    , warp >=3.0 && <3.3
+    , yaml >=0.8 && <0.9
+    , yesod >=1.6 && <1.7
+    , yesod-core >=1.6 && <1.7
+    , yesod-form >=1.6 && <1.7
+    , yesod-static >=1.6 && <1.7
+    , yesod-test
+  default-language: Haskell2010
